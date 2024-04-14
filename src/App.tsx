@@ -29,12 +29,23 @@ export default function App() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  //Update
+
   return (
     <div className="Home">
       <h1>Explore All Github Emojis!!</h1>
       <input type="text" onChange={e => setValue(e.target.value)} value={value}/>
       <div className='display'>
-        {}
+        {((function(){
+          if(value != '') return (<div></div>);
+          
+          return emojis?.map((item, key) => {
+            return (
+              <img src={item} alt="Image" key={key}/>
+            );
+          })
+
+        })())}
       </div>
     </div>
   );
