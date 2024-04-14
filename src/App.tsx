@@ -18,28 +18,23 @@ export default function App() {
         updateEmojis(Object.values(data));
       } catch (error:any) {
         setError(error.message || 'Failed to fetch emojis');
-      } finally {
-        setLoading(false);
-      }
+      } finally {setLoading(false);}
     };
 
     fetchEmojis();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  //Loading Point
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="Home">
       <h1>Explore All Github Emojis!!</h1>
       <input type="text" onChange={e => setValue(e.target.value)} value={value}/>
       <div className='display'>
-        
+        {}
       </div>
     </div>
   );
