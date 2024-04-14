@@ -7,6 +7,6 @@ type ImageTypes = {
 
 export default function Image({url, key}:ImageTypes) {
     return (
-        <img src={url} alt="Image Not Been Loaded" key={key || 0}/>
+        <img className='Images' src={url} alt="Image Not Been Loaded" key={key || 0}/>
     );
 }

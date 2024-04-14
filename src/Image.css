@@ -1,0 +1,11 @@
+.Images {
+    width: 50px;
+    height: auto;
+    margin: 1vh;
+    transition: 0.3s ease;
+}
+
+.Images:hover {
+    transform: scale(3);
+    margin: 4vh;
+}
