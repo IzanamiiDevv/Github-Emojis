@@ -29,7 +29,10 @@ export default function App() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  //Update
+  //Search
+  function search(input:string) {
+    return (<div>{input}</div>)
+  }
 
   return (
     <div className="Home">
@@ -37,7 +40,7 @@ export default function App() {
       <input type="text" onChange={e => setValue(e.target.value)} value={value}/>
       <div className='display'>
         {((function(){
-          if(value != '') return (<div></div>);
+          if(value != '') return (search(value));
           
           return emojis?.map((item, key) => {
             return (
