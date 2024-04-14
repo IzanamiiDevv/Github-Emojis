@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Image from './Image';
 import './App.css';
 
 export default function App() {
@@ -44,7 +45,7 @@ export default function App() {
           
           return emojis?.map((item, key) => {
             return (
-              <img src={item} alt="Image" key={key}/>
+              <Image url={item} key={key}/>
             );
           })
 
