@@ -2,11 +2,16 @@ import { useEffect, useState } from 'react';
 import Image from './Image';
 import './App.css';
 
+type EmojisArray = {
+  name: string;
+  url: string;
+}
+
 export default function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [ emojis, updateEmojis ] = useState<object[] | null>(null);
-  const [ value, setValue ] = useState('');
+  const [emojis, updateEmojis] = useState<EmojisArray[] | null>(null);
+  const [value, setValue] = useState<string>('');
 
   useEffect(() => {
     const fetchEmojis = async () => {
@@ -16,21 +21,21 @@ export default function App() {
           throw new Error('Failed to fetch emojis');
         }
         const data = await response.json();
-        updateEmojis(Object.entries(data).map(([name, url])=>{
-          return {
-            name:name,
-            url:url
-          }
-        }));
+        updateEmojis(Object.entries(data).map(([name, url]) => ({
+          name: name,
+          url: url as string
+        })));
       } catch (error:any) {
         setError(error.message || 'Failed to fetch emojis');
-      } finally {setLoading(false);}
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchEmojis();
   }, []);
 
-  //Loading Point
+  // Loading Point
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -40,23 +45,10 @@ export default function App() {
       <h1>Explore All Github Emojis!!</h1>
       <input type="text" onChange={e => setValue(e.target.value)} value={value}/>
       <div className='display'>
-        {((function(){
-          
-          type EmojisArray = {
-            name:string;
-            url:string;
-          }
-
-          const newSet:any = emojis?.filter((item:any)=>{
-            return item.name.includes(value.toLowerCase());
-          });
-
-          return newSet.map((item:EmojisArray,index:number)=>{
-            return (
-              <Image url={item.url} key={index}/>
-            );
-          });
-        })())}
+        {emojis?.filter((item) => item.name.includes(value.toLowerCase()))
+        .map((item, index) => (
+          <Image url={item.url} key={index}/>
+        ))}
       </div>
     </div>
   );
