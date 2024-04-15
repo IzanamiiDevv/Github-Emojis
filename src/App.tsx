@@ -35,19 +35,6 @@ export default function App() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  //Search
-  function search(input:string) {
-    const newSet:any = emojis?.filter((item:any) => {
-      return item.name.includes(input.toLowerCase());
-    });
-
-    console.log(newSet);
-
-    return (
-      <Image url={newSet.url}/>
-    );
-  }
-
   return (
     <div className="Home">
       <h1>Explore All Github Emojis!!</h1>
@@ -55,11 +42,16 @@ export default function App() {
       <div className='display'>
         {((function(){
           
+          type EmojisArray = {
+            name:string;
+            url:string;
+          }
+
           const newSet:any = emojis?.filter((item:any)=>{
             return item.name.includes(value.toLowerCase());
           });
 
-          return newSet.map((item:any,index:number)=>{
+          return newSet.map((item:EmojisArray,index:number)=>{
             return (
               <Image url={item.url} key={index}/>
             );
