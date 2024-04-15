@@ -5,7 +5,7 @@ import './App.css';
 export default function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [ emojis, updateEmojis ] = useState<string[] | null>(null);
+  const [ emojis, updateEmojis ] = useState<object[] | null>(null);
   const [ value, setValue ] = useState('');
 
   useEffect(() => {
@@ -16,7 +16,12 @@ export default function App() {
           throw new Error('Failed to fetch emojis');
         }
         const data = await response.json();
-        updateEmojis(Object.values(data));
+        updateEmojis(Object.entries(data).map(([name, url])=>{
+          return {
+            name:name,
+            url:url
+          }
+        }));
       } catch (error:any) {
         setError(error.message || 'Failed to fetch emojis');
       } finally {setLoading(false);}
@@ -32,7 +37,15 @@ export default function App() {
 
   //Search
   function search(input:string) {
-    return (<div>{input}</div>)
+    const newSet:any = emojis?.filter((item:any) => {
+      return item.name.includes(input.toLowerCase());
+    });
+
+    console.log(newSet);
+
+    return (
+      <Image url={newSet.url}/>
+    );
   }
 
   return (
@@ -41,14 +54,16 @@ export default function App() {
       <input type="text" onChange={e => setValue(e.target.value)} value={value}/>
       <div className='display'>
         {((function(){
-          if(value != '') return (search(value));
           
-          return emojis?.map((item, key) => {
-            return (
-              <Image url={item} key={key}/>
-            );
-          })
+          const newSet:any = emojis?.filter((item:any)=>{
+            return item.name.includes(value.toLowerCase());
+          });
 
+          return newSet.map((item:any,index:number)=>{
+            return (
+              <Image url={item.url} key={index}/>
+            );
+          });
         })())}
       </div>
     </div>
