@@ -43,7 +43,8 @@ export default function App() {
   return (
     <div className="Home">
       <h1>Explore All Github Emojis!!</h1>
-      <input type="text" onChange={e => setValue(e.target.value)} value={value}/>
+      <label htmlFor="textbox">Search a Emoji: </label>
+      <input type="text"  id='textbox' onChange={e => setValue(e.target.value)} value={value}/>
       <div className='display'>
         {emojis?.filter((item) => item.name.includes(value.toLowerCase()))
         .map((item, index) => (
