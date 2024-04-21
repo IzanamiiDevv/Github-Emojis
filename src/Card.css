@@ -8,6 +8,7 @@
     color: #cfc7c6;
     border-radius: 10px;
     box-shadow: 5px 5px 5px #795a42;
+    
 }
 
 .Card .box {
@@ -22,14 +23,15 @@
     display: flex;
     text-align: center;
     justify-content: center;
-}
-
-.Card .box {
     transition: 0.3s ease;
 }
 
 .Card .box:hover {
     transform: scale(1.5);
     background-color: transparent;
-    filter: blur(2px);
+}
+
+.Card .contents {
+    padding-top: 10px;
+    overflow-wrap: break-word;
 }
