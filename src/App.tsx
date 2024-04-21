@@ -37,7 +37,7 @@ export default function App() {
 
   // Loading Point
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <h1 className='load'>Loading...</h1>;
   if (error) return <div>Error: {error}</div>;
 
   return (

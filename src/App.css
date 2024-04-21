@@ -6,3 +6,8 @@
   padding-left: 10vh;
   overflow-x: hidden;
 }
+
+.load {
+  font-size: 5rem;
+  text-align: center;
+}
