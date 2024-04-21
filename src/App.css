@@ -1,3 +1,8 @@
 .Home h1 {
   text-align: center;
 }
+
+.Home .display {
+  padding-left: 10vh;
+  overflow-x: hidden;
+}

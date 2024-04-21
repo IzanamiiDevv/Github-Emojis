@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Image from './Image';
+import Card from './card';
 import './App.css';
 
 type EmojisArray = {
@@ -47,7 +47,7 @@ export default function App() {
       <div className='display'>
         {emojis?.filter((item) => item.name.includes(value.toLowerCase()))
         .map((item, index) => (
-          <Image url={item.url} key={index}/>
+          <Card content={item} key={index}/>
         ))}
       </div>
     </div>

@@ -1,0 +1,30 @@
+.Card {
+    display: inline-block;
+    width: 150px;
+    height: 250px;
+    margin: 10px;
+    background: #AF8260;
+    padding: 15px;
+    color: #322C2B;
+}
+
+.Card .box {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-top: 2vh;
+    background: #803D3B;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.Card .box img {
+    transition: 0.3s ease;
+}
+
+.Card .box img:hover {
+    transform: scale(2);
+}
