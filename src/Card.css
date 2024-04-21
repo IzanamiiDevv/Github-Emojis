@@ -5,7 +5,6 @@
     margin: 10px;
     background: #AF8260;
     padding: 15px;
-    color: #cfc7c6;
     border-radius: 10px;
     box-shadow: 5px 5px 5px #795a42;
     
@@ -34,4 +33,5 @@
 .Card .contents {
     padding-top: 10px;
     overflow-wrap: break-word;
+    color: #cfc7c6;
 }
