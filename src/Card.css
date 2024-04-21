@@ -5,10 +5,13 @@
     margin: 10px;
     background: #AF8260;
     padding: 15px;
-    color: #322C2B;
+    color: #cfc7c6;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #795a42;
 }
 
 .Card .box {
+    border-radius: 5px;
     width: 100px;
     height: 100px;
     margin: auto;
@@ -21,10 +24,12 @@
     justify-content: center;
 }
 
-.Card .box img {
+.Card .box {
     transition: 0.3s ease;
 }
 
-.Card .box img:hover {
-    transform: scale(2);
+.Card .box:hover {
+    transform: scale(1.5);
+    background-color: transparent;
+    filter: blur(2px);
 }
